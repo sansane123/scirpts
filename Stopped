@@ -1,0 +1,1 @@
+aws ec2 describe-instances --region us-west-2 --filters "Name=instance-state-code,Values=80" --query 'Reservations[].Instances[].[Tags[?Key==`Name`] | [0].Value, PrivateIpAddress, State.Name, StateTransitionReason]' --output table | sort -k 6,6
